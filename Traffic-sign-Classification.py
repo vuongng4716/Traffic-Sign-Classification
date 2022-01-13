@@ -14,8 +14,8 @@ import pandas as pd
 import random
 from keras.preprocessing.image import ImageDataGenerator
 
-path = "C:\\Users\\ThinkPad\\Desktop\\myData"
-labelFile = "C:\\Users\\ThinkPad\\Desktop\\labels.csv"
+path = "myData"
+labelFile = "labels.csv"
 
 batch_size_val = 16
 steps_per_epoch = 200
@@ -126,6 +126,10 @@ model = MyModel()
 history = model.fit_generator(dataGen.flow(X_train, y_train, batch_size=32),
                               steps_per_epoch=len(X_train) // 32, epochs=10,
                               validation_data=(X_val, y_val), shuffle=1)
+
+pickle_out= open("model_trained.p","wb")  # wb = WRITE BYTE
+pickle.dump(model,pickle_out)
+pickle_out.close()
 
 
 
