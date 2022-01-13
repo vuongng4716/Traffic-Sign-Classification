@@ -127,7 +127,7 @@ history = model.fit_generator(dataGen.flow(X_train, y_train, batch_size=32),
                               steps_per_epoch=len(X_train) // 32, epochs=10,
                               validation_data=(X_val, y_val), shuffle=1)
 
-pickle_out= open("model_trained.p","wb")  # wb = WRITE BYTE
+pickle_out= open("model_trained.pkl","wb")  # wb = WRITE BYTE
 pickle.dump(model,pickle_out)
 pickle_out.close()
 
